@@ -1,22 +1,21 @@
 import React, { useState } from "react";
-
 import Accordion from "./components/Accordion";
 import Search from "./components/Search";
-import DropDown from "./components/DropDown";
+import Dropdown from "./components/Dropdown";
+import Translate from "./components/Translate";
 
-const item = [
+const items = [
   {
     title: "What is React?",
-    content: "React is a Front-end js framework(technically it's a library)",
+    content: "React is a front end javascript framework",
   },
   {
-    title: "Why we use it soo much?",
-    content:
-      "Due to it's reusability and simplicity we use Reactjs. Also performance time is a big factor in this",
+    title: "Why use React?",
+    content: "React is a favorite JS library among engineers",
   },
   {
-    title: "Who created Reactjs?",
-    content: "Reactjs is created by the engineers of facebook ",
+    title: "How do you use React?",
+    content: "You use React by creating components",
   },
 ];
 
@@ -35,23 +34,10 @@ const options = [
   },
 ];
 
-const App = () => {
-  const [selected, setSelected] = useState(options[0]);
-  const [showDropdown, setShowDropdown] = useState(true);
+export default () => {
   return (
     <div className="ui container">
-      <button onClick={() => setShowDropdown(!showDropdown)}>
-        Toggle DropDown
-      </button>
-      {showDropdown ? (
-        <DropDown
-          selected={selected}
-          onSelectedChange={setSelected}
-          options={options}
-        />
-      ) : null}
+      <Translate />
     </div>
   );
 };
-
-export default App;

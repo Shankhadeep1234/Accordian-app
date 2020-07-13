@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from 'react';
 
-const DropDown = ({ options, selected, onSelectedChange }) => {
+const Dropdown = ({ label, options, selected, onSelectedChange }) => {
   const [open, setOpen] = useState(false);
   const ref = useRef();
 
@@ -9,13 +9,14 @@ const DropDown = ({ options, selected, onSelectedChange }) => {
       if (ref.current.contains(event.target)) {
         return;
       }
+
       setOpen(false);
     };
 
-    document.body.addEventListener("click", onBodyClick);
+    document.body.addEventListener('click', onBodyClick);
 
     return () => {
-      document.body.removeEventListener("click", onBodyClick);
+      document.body.removeEventListener('click', onBodyClick);
     };
   }, []);
 
@@ -23,6 +24,7 @@ const DropDown = ({ options, selected, onSelectedChange }) => {
     if (option.value === selected.value) {
       return null;
     }
+
     return (
       <div
         key={option.value}
@@ -37,14 +39,14 @@ const DropDown = ({ options, selected, onSelectedChange }) => {
   return (
     <div ref={ref} className="ui form">
       <div className="field">
-        <label className="label">Select a Color</label>
+        <label className="label">{label}</label>
         <div
           onClick={() => setOpen(!open)}
-          className={`ui selection dropdown ${open ? `visible active` : ""}`}
+          className={`ui selection dropdown ${open ? 'visible active' : ''}`}
         >
           <i className="dropdown icon"></i>
           <div className="text">{selected.label}</div>
-          <div className={`menu ${open ? `visible transition` : ""}`}>
+          <div className={`menu ${open ? 'visible transition' : ''}`}>
             {renderedOptions}
           </div>
         </div>
@@ -53,4 +55,4 @@ const DropDown = ({ options, selected, onSelectedChange }) => {
   );
 };
 
-export default DropDown;
+export default Dropdown;
